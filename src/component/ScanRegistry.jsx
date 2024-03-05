@@ -110,9 +110,11 @@ export default function ScanRegistry() {
         "http://16.171.160.250:3000/api/outdatedDrivers",
         { outdatedDrivers, productID }
       );
+      alert("outdated drivers stored")
       console.log("Outdated drivers stored in MongoDB:", res.data);
     } catch (error) {
       console.error("Error posting outdated drivers:", error);
+      alert("Error posting outdated drivers")
     }
   };
   
@@ -177,8 +179,7 @@ export default function ScanRegistry() {
       }
     };
   
-    fetchAndMergeDrivers(); // Fetch and merge drivers
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchAndMergeDrivers(); 
   }, [selectedNumber]);
   
 
