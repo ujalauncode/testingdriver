@@ -1,0 +1,52 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "Advance Driver Update",
+    "version": "0.0.0"
+  },
+  "tauri": {  
+   
+    "allowlist": {
+      "all": true,
+      "fs": {
+       "renameFile": true,
+       "removeFile": true,
+        "scope": ["$APP/*","$DOWNLOAD/*"]
+      },
+      "shell": {
+        "all": false,
+        "open": true
+      }         
+    },
+
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.demo.dev",
+      "icon": [
+       
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "decorations": false,
+        "fullscreen": false,
+        "resizable": false,
+        "title": "Advance Driver Update",
+        "width": 800,
+        "height": 600,
+        "minimizable": true,
+        "alwaysOnTop": false
+        
+      }
+    ]    
+  }
+}
