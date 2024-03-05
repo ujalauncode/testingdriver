@@ -180,7 +180,7 @@ useEffect(() => {
                     </h3>
                   )}
                     <h6 className="text-xs font-medium">
-                    Last Scan : {latestBackupDate ? latestBackupDate : "No backup done yet"}
+                    Last Scan : 05/03/2024
                     </h6>
 
                     <h6 className="text-xs font-medium ">
