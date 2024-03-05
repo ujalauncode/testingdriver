@@ -181,7 +181,7 @@ useEffect(() => {
                     </h3>
                   )}
                     <h6 className="text-xs font-medium">
-                    Last Scan : {latestBackupDate }
+                    Last Scan : {latestBackupDate}
                     </h6>
 
                     <h6 className="text-xs font-medium ">
@@ -228,9 +228,7 @@ useEffect(() => {
               <span className="font-bold text-xs text-black designpid">{systemInfo.product_id}</span>
             )}
           </div>
-          {error ? (
-            <p>Error fetching system information: {error}</p>
-          ) : (
+          
             <div>
               {systemInfo && (
                 <div className="left2">
@@ -273,9 +271,7 @@ useEffect(() => {
                       </li>
                     </div>
                     <div className="flex mt-2">
-                      {/* <WindowIcon color="primary" className="box-icon " /> */}
                       <img src={graph} alt=""  className="box-icon "/>
-
                       <li className="text-black ">
                         <h6 className="text-xs">Graphics</h6>{" "}
                         <h5 className="text-sm font-semibold font-sans">
@@ -287,7 +283,7 @@ useEffect(() => {
                 </div>
               )}
             </div>
-          )}
+         
         </div>
       </div>
     </>
