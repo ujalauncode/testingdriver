@@ -42,18 +42,18 @@ const handleStartScan = () => {
     setCleanerStart("scan-registry");
   };
 
-useEffect(() => {
-  const fetchDrivers = async () => {
-    try {
-      const res = await axios.get('http://16.171.160.250:3000/outdatedDrivers');
-     const a =res.data     
-    } catch (error) {
-      console.error('Error:', error);
+// useEffect(() => {
+//   const fetchDrivers = async () => {
+//     try {
+//       const res = await axios.get('http://16.171.160.250:3000/outdatedDrivers');
+//      const a =res.data     
+//     } catch (error) {
+//       console.error('Error:', error);
      
-    }
-  };
-  fetchDrivers();
-}, []);
+//     }
+//   };
+//   fetchDrivers();
+// }, []);
 
   // useEffect(() => {
   //   const fetchDataAndStoreOutdatedDrivers = async () => {
@@ -128,13 +128,14 @@ useEffect(() => {
   useEffect(() => {
     axios.get('http://16.171.160.250:3000/api/outdatedDrivers/count')
       .then(response => {
-        setCount(response.data.count);
+        setCount(response.data.count || 0);
       })
       .catch(error => {
-        setError('Error fetching outdated drivers count');
         console.error('Error fetching outdated drivers count:', error);
+        setCount(0);
       });
-  }, []); 
+  }, []);
+  
 
 
 
