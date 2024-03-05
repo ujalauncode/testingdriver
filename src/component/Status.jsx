@@ -143,12 +143,12 @@ useEffect(() => {
       try {
         const response = await axios.get('http://16.171.160.250:3000/backupdate');
         const data = response.data;
-
+  
         if (data.sortedData && data.sortedData.length > 0) {
           const latestDate = data.sortedData[0].backupDate;
           setLatestBackupDate(latestDate);
         } else {
-          setError('No backup dates found in the database');
+          setLatestBackupDate('No backup done yet');
         }
       } catch (error) {
         setError('Error fetching latest backup date');
@@ -156,9 +156,10 @@ useEffect(() => {
         // setLoading(false);
       }
     }
-
+  
     fetchLatestBackupDate();
   }, []);
+  
 
 
   return cleanerStart === "status" ? (
@@ -180,7 +181,7 @@ useEffect(() => {
                     </h3>
                   )}
                     <h6 className="text-xs font-medium">
-                    Last Scan : 05/03/2024
+                    Last Scan : {latestBackupDate }
                     </h6>
 
                     <h6 className="text-xs font-medium ">
