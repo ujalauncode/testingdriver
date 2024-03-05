@@ -114,7 +114,7 @@ export default function ScanRegistry() {
       console.log("Outdated drivers stored in MongoDB:", res.data);
     } catch (error) {
       console.error("Error posting outdated drivers:", error);
-      alert("Error posting outdated drivers")
+      alert("Error posting outdated drivers",error)
     }
   };
   
