@@ -1804,10 +1804,10 @@ font-size: 13px;
   font-weight: 800;
   margin-top: 16px;
   margin-left: 79%;
-  background-image: linear-gradient(rgb(2 2 2), rgb(3 3 3));
-border: rgb(243 237 237) 1px solid;
-
+  background-image: linear-gradient(rgb(2 2 2), rgb(3 3 3)) ;
+border: white 1px solid;
 }
+
 .tbcolor{
   background-color: #484747;
 }
