@@ -372,6 +372,7 @@ export default function ScanRegistry() {
                         </tr>
                       );
                     })}
+                    
                 </tbody>
                 
               </table>
@@ -386,7 +387,7 @@ export default function ScanRegistry() {
           >
             Learn More
           </button>
-          <span className="mt-6 font-serif text-xs font-medium">
+          <span className="mt-6 font-serif text-xs font-medium text-white">
             To Update all rest Drivers click on Update All
           </span>
           <button

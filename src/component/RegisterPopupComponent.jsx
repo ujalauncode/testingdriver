@@ -122,11 +122,11 @@ export default function RegisterPopupComponent({ onClose }) {
                           fontWeight: "600",
                         }}
                       >
-                        DevClean Pro
+                        Advance Driver Update
                       </span>{" "}
                     </div>
                     <div>
-                      to repair all registry on your PC , other benefit may
+                      to update all drivers on your PC , other benefit may
                       include faster startup and{" "}
                     </div>
                     <div> greater stability of your system </div>

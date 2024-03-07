@@ -157,7 +157,7 @@ export default function StartScan({ value = 0 }) {
         </div>
       </div>
       <div id="pagescanbottom" className="fixed-bottom">
-        <button className="btn btn-light designbtnbackup1 px-4" onClick={handleScanToggle}>
+        <button className="btn btn-light designbtnbackup1 px-4 text-black" onClick={handleScanToggle}>
           {isScanning ? "Stop Scan" : "Start Scan"}
         </button>
       </div>
