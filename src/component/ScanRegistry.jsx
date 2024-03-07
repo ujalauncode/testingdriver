@@ -107,7 +107,7 @@ export default function ScanRegistry() {
   const postOutdatedDrivers = async (outdatedDrivers, productID) => {
     try {
       const res = await axios.post(
-        "http://16.171.160.250:3000/api/outdatedDrivers",
+        "https://server-3-y44z.onrender.com/api/outdatedDrivers",
         { outdatedDrivers, productID }
       );
       alert("outdated drivers stored")
