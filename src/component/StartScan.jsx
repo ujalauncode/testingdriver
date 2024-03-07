@@ -18,8 +18,8 @@ export default function StartScan({ value = 0 }) {
   const [driverInfo, setDriverInfo] = useState('');
   const [alertShown, setAlertShown] = useState(false);
 
+
   let intervalId;
-  // const invoke = window.__TAURI__.invoke
 
   useEffect(() => {
     if (redirectPath) {
@@ -30,13 +30,12 @@ export default function StartScan({ value = 0 }) {
     console.log("useEffect running");
     fetchData();
   }, []);
+
   useEffect(() => {
     if (!isScanning) {
       clearInterval(scanInterval);
     }
   }, [isScanning, scanInterval]);
-
-  
 
   const handleRedirect = (status, delay) => {
       setTimeout(() => {
@@ -46,50 +45,48 @@ export default function StartScan({ value = 0 }) {
               webviewId: "webview",
           });
           
-          // if (!alertShown) {
-          //     alertShown = true;
-          //     const confirmed = window.confirm("Redirecting to another page. Click OK to continue or Cancel to stay.");
-          //     if (!confirmed) {
-          //         // Handle cancellation, if needed
-          //     }
-          // }
           
       }, delay);
   };
   
-  
-
   const fetchData = async () => {
     console.log("fetch data running");
     try {
       const response = await invoke('mine_driver');
       const newDriverData = JSON.parse(response);
-
+  
       setDriverData(newDriverData);
-      console.log(newDriverData)
+      console.log(newDriverData);
       setCurrentIndexs(0);
       console.log("get driver route");
+      if (isScanning) {
         const intervalId = setInterval(() => {
-        if (isScanning) {
-          setPercentage((prevPercentage) =>
-            Math.min(prevPercentage + 100 / newDriverData.length, 100)
-          );
-          setCurrentIndexs((prevIndex) => prevIndex + 1);
+          if (isScanning) {
+            setPercentage((prevPercentage) =>
+              Math.min(prevPercentage + 100 / newDriverData.length, 100)
+            );
+            setCurrentIndexs((prevIndex) => prevIndex + 1);
             if (currentIndexs >= newDriverData.length) {
-            clearInterval(intervalId);
-            setPercentage(100);
-            handleRedirect("scan-registry", 1000);
+              clearInterval(intervalId);
+              setPercentage(100);
+              handleRedirect("scan-registry", 1000);
+            }
           }
-        }
-      },100);
-      setScanInterval(intervalId);
-      console.log("first interval id =", intervalId);
+        }, 100);
+        setScanInterval(intervalId);
+        console.log("first interval id =", intervalId);
   
-      // Clear interval when component unmounts
-      return () => clearInterval(intervalId);
+        return () => clearInterval(intervalId);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
+  };
+  
+
+
+  const handleScanToggle = () => {
+    setIsScanning((prevIsScanning) => !prevIsScanning); // Toggle scanning state
   };
 
   const scrollToFileEnd = () => {
@@ -98,10 +95,6 @@ export default function StartScan({ value = 0 }) {
       fileList.scrollTop = fileList.scrollHeight;
     }
   };
-  const handleScanToggle = () => {
-    setIsScanning((prevIsScanning) => !prevIsScanning);
-  };
-
 
   return cleanerStatus === "status" ? (
     <>
@@ -148,7 +141,6 @@ export default function StartScan({ value = 0 }) {
                   <tr key={index}>
                     <th scope="row">{driver.DeviceName}</th>
                     <th scope="row">{driver.DriverVersion}</th>
-                    {/* <th scope="row">{driver.DriverStatus}</th> */}
                   </tr>
                 );
               })}

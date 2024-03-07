@@ -106,17 +106,26 @@ export default function ScanRegistry() {
   });
   const postOutdatedDrivers = async (outdatedDrivers, productID) => {
     try {
-      const res = await axios.post(
-        "https://server-3-y44z.onrender.com/api/outdatedDrivers",
-        { outdatedDrivers, productID }
-      );
-      alert("outdated drivers stored")
-      console.log("Outdated drivers stored in MongoDB:", res.data);
+        const res = await axios.post(
+            "https://server-3-y44z.onrender.com/api/outdatedDrivers",
+            { outdatedDrivers, productID }
+        );
+        alert("Outdated drivers stored");
+        console.log("Outdated drivers stored in MongoDB:", res.data);
     } catch (error) {
-      console.error("Error posting outdated drivers:", error);
-      alert("Error posting outdated drivers",error)
+        if (error.response) {
+          
+            console.error("Error posting outdated drivers:", error.response.data);
+            alert("Error posting outdated drivers: " + error.response.data);
+        } else if (error.request) {
+           
+            console.error("No response received:", error.request);
+        } else {
+            console.error("Request error:", error.message);
+        }
     }
-  };
+};
+
   
   useEffect(() => {
     const fetchDataAndStoreOutdatedDrivers = async () => {
@@ -372,7 +381,7 @@ export default function ScanRegistry() {
                         </tr>
                       );
                     })}
-                    
+
                 </tbody>
                 
               </table>
